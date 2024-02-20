@@ -17,7 +17,7 @@ dependencies:
   intl: ^0.18.1
   flutter_localization: ^0.1.14
   calendar_date_picker2:
-    path: ./lib/packages/calendar_date_picker2
+    path: lib/packages/calendar_date_picker2
 
 #  logic
   uuid: ^4.1.0
