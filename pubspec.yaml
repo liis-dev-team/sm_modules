@@ -37,3 +37,28 @@ dev_dependencies:
 
 
 flutter:
+  fonts:
+    - family: AppIcons
+      fonts:
+        - asset: assets/app_icons/sl/AppIcons.ttf
+    - family: AppIconsExtra
+      fonts:
+        - asset: assets/app_icons/extra/AppIconsExtra.ttf
+    - family: AppIconsBold
+      fonts:
+        - asset: assets/app_icons/sl/bold/AppIconsBold.ttf
+    - family: AppIconsFill
+      fonts:
+        - asset: assets/app_icons/sl/fill/AppIconsFill.ttf
+    - family: NunitoSans-Black
+      fonts:
+        - asset: assets/fonts/nunito_sans/NunitoSans-Black.ttf
+    - family: NunitoSans-Bold
+      fonts:
+        - asset: assets/fonts/nunito_sans/NunitoSans-Bold.ttf
+    - family: NunitoSans-Regular
+      fonts:
+        - asset: assets/fonts/nunito_sans/NunitoSans-Regular.ttf
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/roboto/Roboto-Regular.ttf
