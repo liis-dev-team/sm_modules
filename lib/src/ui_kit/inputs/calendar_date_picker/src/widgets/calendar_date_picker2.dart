@@ -4,11 +4,11 @@
 
 import 'dart:math' as math;
 
-import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:sm_modules/src/ui_kit/inputs/calendar_date_picker/calendar_date_picker2.dart';
 
 part '_impl/_calendar_view.dart';
 part '_impl/_date_picker_mode_toggle_button.dart';
