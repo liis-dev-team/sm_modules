@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:sm_modules/src/ui_kit/helpers/vector/converter.dart';
+import 'package:sm_modules/src/vector/converter.dart';
 
 part 'vector2.freezed.dart';
 part 'vector2.g.dart';

@@ -7,7 +7,7 @@ import 'package:sm_modules/src/ui_kit/buttons/secondary.dart';
 import 'package:sm_modules/src/ui_kit/buttons/with_icon.dart';
 import 'package:sm_modules/src/ui_kit/core/app_theme.dart';
 import 'package:sm_modules/src/ui_kit/core/app_typography.dart';
-import 'package:sm_modules/src/ui_kit/helpers/vector/vector2/vector2.dart';
+import 'package:sm_modules/src/vector/vector2/vector2.dart';
 
 class CalendarInput extends StatefulWidget {
   final Function(Vector2<DateTime>? value)? onSubmitted;
@@ -28,8 +28,6 @@ class CalendarInput extends StatefulWidget {
 class CalendarInputState extends State<CalendarInput> {
   final ValueNotifier<Vector2<DateTime>?> _tempDate = ValueNotifier(null);
   final ValueNotifier<bool> _resetDate = ValueNotifier(false);
-  final ScrollController _firstController = ScrollController();
-  final ScrollController _secondController = ScrollController();
 
   @override
   void initState() {
@@ -222,7 +220,6 @@ class CalendarInputState extends State<CalendarInput> {
                                       : [],
                                 );
                               });
-                              return const SizedBox.expand();
                             }),
                       ),
                     ),
