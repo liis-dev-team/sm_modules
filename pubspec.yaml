@@ -11,12 +11,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
 #  UI
   flutter_list_view: ^1.1.22
   pull_to_refresh: ^2.0.0
   flutter_portal: ^1.1.4
   intl: ^0.18.1
   flutter_localization: ^0.1.14
+  flutter_svg: ^2.0.7
 
 #  logic
   uuid: ^4.1.0
@@ -36,28 +38,32 @@ dev_dependencies:
 
 
 flutter:
+  assets:
+    - packages/sm_modules/assets/images/auth_back_cubes.png
+    - packages/sm_modules/assets/images/logo.svg
+
   fonts:
     - family: AppIcons
       fonts:
-        - asset: assets/app_icons/sl/AppIcons.ttf
+        - asset: packages/sm_modules/assets/app_icons/sl/AppIcons.ttf
     - family: AppIconsExtra
       fonts:
-        - asset: assets/app_icons/extra/AppIconsExtra.ttf
+        - asset: packages/sm_modules/assets/app_icons/extra/AppIconsExtra.ttf
     - family: AppIconsBold
       fonts:
-        - asset: assets/app_icons/sl/bold/AppIconsBold.ttf
+        - asset: packages/sm_modules/assets/app_icons/sl/bold/AppIconsBold.ttf
     - family: AppIconsFill
       fonts:
-        - asset: assets/app_icons/sl/fill/AppIconsFill.ttf
+        - asset: packages/sm_modules/assets/app_icons/sl/fill/AppIconsFill.ttf
     - family: NunitoSans-Black
       fonts:
-        - asset: assets/fonts/nunito_sans/NunitoSans-Black.ttf
+        - asset: packages/sm_modules/assets/fonts/nunito_sans/NunitoSans-Black.ttf
     - family: NunitoSans-Bold
       fonts:
-        - asset: assets/fonts/nunito_sans/NunitoSans-Bold.ttf
+        - asset: packages/sm_modules/assets/fonts/nunito_sans/NunitoSans-Bold.ttf
     - family: NunitoSans-Regular
       fonts:
-        - asset: assets/fonts/nunito_sans/NunitoSans-Regular.ttf
+        - asset: packages/sm_modules/assets/fonts/nunito_sans/NunitoSans-Regular.ttf
     - family: Roboto
       fonts:
-        - asset: assets/fonts/roboto/Roboto-Regular.ttf
+        - asset: packages/sm_modules/assets/fonts/roboto/Roboto-Regular.ttf

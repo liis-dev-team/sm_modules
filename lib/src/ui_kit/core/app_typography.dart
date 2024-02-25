@@ -53,6 +53,7 @@ class AppTypographyTablet extends AppTypography {
     fontFamily: AppTypography.nunitoSansBlack,
     fontSize: 28,
     height: 1.1428,
+    package: 'sm_modules',
   );
   @override
   TextStyle h2 = const TextStyle(
@@ -60,6 +61,7 @@ class AppTypographyTablet extends AppTypography {
     fontSize: 24,
     fontWeight: FontWeight.w700,
     height: 1.166,
+    package: 'sm_modules',
   );
   @override
   TextStyle h3 = const TextStyle(
@@ -67,12 +69,14 @@ class AppTypographyTablet extends AppTypography {
     fontSize: 20,
     fontWeight: FontWeight.w700,
     height: 1.2,
+    package: 'sm_modules',
   );
   @override
   TextStyle title4 = const TextStyle(
     fontFamily: AppTypography.nunitoSansBold,
     fontSize: 20,
     height: 1.2,
+    package: 'sm_modules',
   );
 
   @override
@@ -80,18 +84,21 @@ class AppTypographyTablet extends AppTypography {
     fontFamily: AppTypography.nunitoSansBold,
     fontSize: 18,
     height: 1.222,
+    package: 'sm_modules',
   );
   @override
   TextStyle button2 = const TextStyle(
     fontFamily: AppTypography.nunitoSansBold,
     fontSize: 14,
     height: 1.1428,
+    package: 'sm_modules',
   );
   @override
   TextStyle button3 = const TextStyle(
     fontFamily: AppTypography.nunitoSansBold,
     fontSize: 12,
     height: 1.1428,
+    package: 'sm_modules',
   );
 
   @override
@@ -99,12 +106,14 @@ class AppTypographyTablet extends AppTypography {
     fontFamily: AppTypography.nunitoSansBold,
     fontSize: 18,
     height: 1.2222,
+    package: 'sm_modules',
   );
   @override
   TextStyle subhead = const TextStyle(
     fontFamily: AppTypography.nunitoSansBold,
     fontSize: 16,
     height: 1.25,
+    package: 'sm_modules',
   );
 
   @override
@@ -112,6 +121,7 @@ class AppTypographyTablet extends AppTypography {
     fontFamily: AppTypography.nunitoSansRegular,
     fontSize: 16,
     height: 1.5,
+    package: 'sm_modules',
   );
   @override
   TextStyle b16Bold = const TextStyle(
@@ -119,12 +129,14 @@ class AppTypographyTablet extends AppTypography {
     fontSize: 16,
     fontWeight: FontWeight.w700,
     height: 1.5,
+    package: 'sm_modules',
   );
   @override
   TextStyle b14 = const TextStyle(
     fontFamily: AppTypography.nunitoSansRegular,
     fontSize: 14,
     height: 1.428,
+    package: 'sm_modules',
   );
   @override
   TextStyle b14Bold = const TextStyle(
@@ -132,12 +144,14 @@ class AppTypographyTablet extends AppTypography {
     fontSize: 14,
     fontWeight: FontWeight.w700,
     height: 1.428,
+    package: 'sm_modules',
   );
   @override
   TextStyle b12 = const TextStyle(
     fontFamily: AppTypography.nunitoSansRegular,
     fontSize: 12,
     height: 1.333,
+    package: 'sm_modules',
   );
   @override
   TextStyle b12Bold = const TextStyle(
@@ -145,6 +159,7 @@ class AppTypographyTablet extends AppTypography {
     fontSize: 12,
     fontWeight: FontWeight.w700,
     height: 1.333,
+    package: 'sm_modules',
   );
 
   @override
@@ -152,6 +167,7 @@ class AppTypographyTablet extends AppTypography {
     fontFamily: AppTypography.nunitoSansRegular,
     fontSize: 13,
     height: 1.2307,
+    package: 'sm_modules',
   );
 }
 

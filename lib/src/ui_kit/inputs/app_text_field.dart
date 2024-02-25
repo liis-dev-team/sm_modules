@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sm_modules/sm_ui_kit.dart';
 import 'package:sm_modules/src/ui_kit/core/app_theme.dart';
 import 'package:sm_modules/src/ui_kit/core/app_typography.dart';
 
@@ -126,16 +127,20 @@ class _AppTextFieldState extends State<AppTextField> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           if (widget.password)
-                            IconButton(
-                              splashRadius: 14,
-                              visualDensity: VisualDensity.compact,
-                              onPressed: () =>
-                                  setState(() => _obscure = !_obscure),
-                              icon: Icon(
-                                _obscure
-                                    ? Icons.remove_red_eye_outlined
-                                    : Icons.remove_red_eye,
-                                size: 16,
+                            Padding(
+                              padding: const EdgeInsets.only(right: 2),
+                              child: IconButton(
+                                splashRadius: 14,
+                                visualDensity: VisualDensity.compact,
+                                onPressed: () =>
+                                    setState(() => _obscure = !_obscure),
+                                icon: Icon(
+                                  _obscure
+                                      ? AppIconsBold.eyeClosed
+                                      : AppIconsBold.eye,
+                                  size: 24,
+                                  color: AppColorsLight.grey5,
+                                ),
                               ),
                             ),
                           if (widget.canClear &&

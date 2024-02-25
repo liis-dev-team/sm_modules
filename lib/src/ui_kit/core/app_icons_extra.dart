@@ -12,5 +12,5 @@ class AppIconsExtra {
 
   static const String _fontFamily = 'AppIconsExtra';
 
-  static const IconData user = IconData(0xe900, fontFamily: _fontFamily);
+  static const IconData user = IconData(0xe900, fontFamily: _fontFamily, fontPackage: 'sm_modules');
 }
