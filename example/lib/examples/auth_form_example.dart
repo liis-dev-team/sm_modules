@@ -12,7 +12,7 @@ class AuthFormExample extends StatelessWidget {
       title: 'AuthFormExample',
       theme: AppThemes.lightThemeMobile(),
       home: AuthForm(
-        onLoginChanged: (value) => print(value),
+        onEmailChanged: (value) => print(value),
         onConfirm: () => print('confirm'),
         onForgotPassword: () => print('forgot'),
       ),
