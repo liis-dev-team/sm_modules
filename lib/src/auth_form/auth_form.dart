@@ -172,13 +172,13 @@ class AuthForm extends StatelessWidget {
                               );
                             }
                           ),
-                          SizedBox(
-                            height: 16,
-                          ),
-                          AppTextButton(
-                            text: 'Забыли пароль?',
-                            onTap: onForgotPassword,
-                          ),
+                          // SizedBox(
+                          //   height: 16,
+                          // ),
+                          // AppTextButton(
+                          //   text: 'Забыли пароль?',
+                          //   onTap: onForgotPassword,
+                          // ),
                         ],
                       ),
                     ),
