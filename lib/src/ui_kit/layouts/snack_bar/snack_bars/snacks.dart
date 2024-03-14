@@ -11,7 +11,7 @@ class AppSnack with _$AppSnack {
     String? text,
     Widget? actions,
     List<SnackOption>? options,
-    @Default(Duration(seconds: 10)) Duration duration,
+    @Default(Duration(seconds: 3)) Duration duration,
   }) = _AppSnack;
 }
 
