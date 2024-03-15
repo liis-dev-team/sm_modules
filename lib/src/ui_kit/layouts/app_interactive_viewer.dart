@@ -1445,20 +1445,3 @@ Axis? _getPanAxis(Offset point1, Offset point2) {
   final double y = point2.dy - point1.dy;
   return x.abs() > y.abs() ? Axis.horizontal : Axis.vertical;
 }
-
-/// This enum is used to specify the behavior of the [AppInteractiveViewer] when
-/// the user drags the viewport.
-enum PanAxis {
-  /// The user can only pan the viewport along the horizontal axis.
-  horizontal,
-
-  /// The user can only pan the viewport along the vertical axis.
-  vertical,
-
-  /// The user can pan the viewport along the horizontal and vertical axes
-  /// but not diagonally.
-  aligned,
-
-  /// The user can pan the viewport freely in any direction.
-  free,
-}
