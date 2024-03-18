@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'examples/auth_form_example.dart';
+import 'examples/ui_example.dart';
 
 void main() {
-  runApp(const AuthFormExample());
+  runApp(const UIExamples());
 }
 
 
