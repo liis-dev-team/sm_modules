@@ -1,10 +1,10 @@
 # This is a generated file; do not edit or check into version control.
-flutter_localization=/Users/lesha_deepko/.pub-cache/hosted/pub.dev/flutter_localization-0.2.0/
-path_provider_linux=/Users/lesha_deepko/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
-path_provider_windows=/Users/lesha_deepko/.pub-cache/hosted/pub.dev/path_provider_windows-2.2.1/
-shared_preferences=/Users/lesha_deepko/.pub-cache/hosted/pub.dev/shared_preferences-2.2.2/
-shared_preferences_android=/Users/lesha_deepko/.pub-cache/hosted/pub.dev/shared_preferences_android-2.2.1/
-shared_preferences_foundation=/Users/lesha_deepko/.pub-cache/hosted/pub.dev/shared_preferences_foundation-2.3.5/
-shared_preferences_linux=/Users/lesha_deepko/.pub-cache/hosted/pub.dev/shared_preferences_linux-2.3.2/
-shared_preferences_web=/Users/lesha_deepko/.pub-cache/hosted/pub.dev/shared_preferences_web-2.2.2/
-shared_preferences_windows=/Users/lesha_deepko/.pub-cache/hosted/pub.dev/shared_preferences_windows-2.3.2/
+flutter_localization=/Users/dbav/.pub-cache/hosted/pub.dev/flutter_localization-0.2.0/
+path_provider_linux=/Users/dbav/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.1/
+path_provider_windows=/Users/dbav/.pub-cache/hosted/pub.dev/path_provider_windows-2.2.1/
+shared_preferences=/Users/dbav/.pub-cache/hosted/pub.dev/shared_preferences-2.2.2/
+shared_preferences_android=/Users/dbav/.pub-cache/hosted/pub.dev/shared_preferences_android-2.2.1/
+shared_preferences_foundation=/Users/dbav/.pub-cache/hosted/pub.dev/shared_preferences_foundation-2.3.5/
+shared_preferences_linux=/Users/dbav/.pub-cache/hosted/pub.dev/shared_preferences_linux-2.3.2/
+shared_preferences_web=/Users/dbav/.pub-cache/hosted/pub.dev/shared_preferences_web-2.3.0/
+shared_preferences_windows=/Users/dbav/.pub-cache/hosted/pub.dev/shared_preferences_windows-2.3.2/

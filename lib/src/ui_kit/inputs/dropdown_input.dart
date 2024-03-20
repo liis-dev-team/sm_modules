@@ -4,11 +4,10 @@ import 'package:sm_modules/src/ui_kit/buttons/clickable_widget.dart';
 import 'package:sm_modules/src/ui_kit/core/app_icons.dart';
 import 'package:sm_modules/src/ui_kit/core/app_theme.dart';
 import 'package:sm_modules/src/ui_kit/core/app_typography.dart';
-import 'package:sm_modules/src/ui_kit/helpers/list_extension.dart';
 
 class DropdownInput<T> extends StatefulWidget {
   const DropdownInput({
-    Key? key,
+    super.key,
     this.menuAnchor = Alignment.topRight,
     this.childAnchor = Alignment.bottomRight,
     this.offset = Offset.zero,
@@ -21,7 +20,8 @@ class DropdownInput<T> extends StatefulWidget {
     this.isNested = false,
     this.itemBuilder,
     this.labelBuilder,
-  }) : super(key: key);
+    this.textColor,
+  });
 
   final Alignment menuAnchor;
   final Alignment childAnchor;
@@ -37,6 +37,7 @@ class DropdownInput<T> extends StatefulWidget {
   final Widget Function(
     dynamic item,
   )? labelBuilder;
+  final Color? textColor;
 
   @override
   State<DropdownInput> createState() => _DropdownInputState();
@@ -51,6 +52,7 @@ class _DropdownInputState<T> extends State<DropdownInput<T>>
   AnimationController? _animationController;
   Animation<double>? _animation;
   late GlobalKey titleKey;
+  final FocusNode _focusNode = FocusNode();
 
   @override
   void initState() {
@@ -146,6 +148,84 @@ class _DropdownInputState<T> extends State<DropdownInput<T>>
                           style: AT.t.b16.copyWith(color: colors.grey6),
                         ),
                       ),
+                    // TextFormField(
+                    //   autofocus: false,
+                    //   focusNode: _focusNode,
+                    //   controller: TextEditingController(),
+                    //   decoration: InputDecoration(
+                    //     // contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 12),
+                    //       labelText: widget.labelText,
+                    //       errorText: widget.errorText,
+                    //       helperText: widget.helperText,
+                    //       helperMaxLines: 3,
+                    //       helperStyle: AT.t.caption,
+                    //       fillColor: widget.enabled ? colors.white : colors.grey2,
+                    //       filled: !widget.enabled,
+                    //       errorStyle:
+                    //       AT.t.caption.copyWith(color: theme.colorScheme.error),
+                    //       // contentPadding: EdgeInsets.zero,
+                    //       hoverColor: colors.grey1,
+                    //       labelStyle: AT.t.b16.copyWith(color: colors.grey6),
+                    //       suffixIcon: widget.suffix != null ||
+                    //           widget.password ||
+                    //           widget.canClear
+                    //           ? Row(
+                    //         mainAxisAlignment: MainAxisAlignment.end,
+                    //         mainAxisSize: MainAxisSize.min,
+                    //         children: [
+                    //           if (widget.password)
+                    //             Padding(
+                    //               padding: const EdgeInsets.only(right: 2),
+                    //               child: IconButton(
+                    //                 splashRadius: 14,
+                    //                 visualDensity: VisualDensity.compact,
+                    //                 onPressed: () =>
+                    //                     setState(() => _obscure = !_obscure),
+                    //                 icon: Icon(
+                    //                   _obscure
+                    //                       ? AppIconsBold.eyeClosed
+                    //                       : AppIconsBold.eye,
+                    //                   size: 24,
+                    //                   color: AppColorsLight.grey5,
+                    //                 ),
+                    //               ),
+                    //             ),
+                    //           if (widget.canClear &&
+                    //               (_controller.text.isNotEmpty || _focus.hasFocus))
+                    //             IconButton(
+                    //               splashRadius: 14,
+                    //               visualDensity: VisualDensity.compact,
+                    //               onPressed: () {
+                    //                 setState(_controller.clear);
+                    //                 widget.onChanged?.call('');
+                    //               },
+                    //               icon: const Icon(
+                    //                 Icons.close,
+                    //                 size: 16,
+                    //               ),
+                    //             ),
+                    //           if (widget.suffix != null) widget.suffix!,
+                    //         ],
+                    //       )
+                    //           : null,
+                    //       errorMaxLines: 3,
+                    //       alignLabelWithHint: true,
+                    //       floatingLabelBehavior: FloatingLabelBehavior.auto),
+                    //   obscureText: _obscure,
+                    //   obscuringCharacter: '*',
+                    //   enabled: widget.enabled,
+                    //   style: AT.t.b16.copyWith(
+                    //     color: colors.black,
+                    //   ),
+                    //   onChanged: (text) => widget.onChanged?.call(text),
+                    //   onTapOutside: (event) => _focus.unfocus(),
+                    //   onFieldSubmitted: widget.onSubmit,
+                    //   maxLines: widget.multiline ? null : 1,
+                    //   expands: false,
+                    //   textAlignVertical: widget.multiline
+                    //       ? TextAlignVertical.top
+                    //       : TextAlignVertical.center,
+                    // ),
                     ClickableWidget(
                       onTap: () {
                         _open();
@@ -153,10 +233,10 @@ class _DropdownInputState<T> extends State<DropdownInput<T>>
                       child: DecoratedBox(
                         decoration: BoxDecoration(
                             borderRadius:
-                                const BorderRadius.all(Radius.circular(4)),
+                                const BorderRadius.all(Radius.circular(8)),
                             border: Border.all(
-                              width: opened ? 2 : 1,
-                              color: opened ? colors.primary : colors.grey2,
+                              width: 1,
+                              color: opened ? colors.primary : colors.grey4,
                             )),
                         child: Padding(
                           padding: const EdgeInsets.only(left: 16, right: 4),
@@ -166,17 +246,17 @@ class _DropdownInputState<T> extends State<DropdownInput<T>>
                                 fit: FlexFit.tight,
                                 child: Padding(
                                   padding:
-                                      const EdgeInsets.symmetric(vertical: 8),
+                                      const EdgeInsets.symmetric(vertical: 12),
                                   child:
                                       widget.labelBuilder?.call(currentValue) ??
                                           Text(
                                             currentValue?.toString() ??
                                                 widget.label ??
                                                 '',
-                                            style: AT.t.h3.copyWith(
-                                                color: currentValue == null
-                                                    ? colors.grey4
-                                                    : colors.black),
+                                            style: AT.t.b16.copyWith(
+                                                color: widget.textColor ?? (currentValue == null
+                                                    ? colors.grey6
+                                                    : colors.black)),
                                           ),
                                 ),
                               ),
@@ -221,12 +301,12 @@ class DropdownMenu<E> extends StatelessWidget {
   final Widget Function(dynamic item, bool current)? itemBuilder;
 
   const DropdownMenu({
-    Key? key,
+    super.key,
     required this.items,
     this.currentItem,
     this.onChanged,
     this.itemBuilder,
-  }) : super(key: key);
+  });
 
   Widget _builder(
     E item,
@@ -236,15 +316,16 @@ class DropdownMenu<E> extends StatelessWidget {
     SMColors colors = theme.extension<SMColors>()!;
 
     return Row(
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Text(
-          item.toString(),
-          style: AT.t.button.copyWith(
-              color: currentItem == item ? colors.primary : colors.black),
+        Padding(
+          padding: const EdgeInsets.all(16),
+          child: Text(
+            item.toString(),
+            style: AT.t.b16.copyWith(
+                color: currentItem == item ? colors.primary : colors.black),
+          ),
         ),
-      ].separateWithPadding(const EdgeInsets.only(right: 12)),
+      ],
     );
   }
 
@@ -260,29 +341,27 @@ class DropdownMenu<E> extends StatelessWidget {
       child: DecoratedBox(
         decoration: BoxDecoration(
           border: Border.all(
-            color: colors.primary,
-            width: 2,
+            color: colors.grey4,
+            width: 1,
           ),
-          borderRadius: const BorderRadius.all(Radius.circular(4)),
+          borderRadius: const BorderRadius.all(Radius.circular(8)),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 1),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               for (E item in items)
-                ClickableWidget(
+                ClickableHoverWidget(
+                  color: colors.grey1,
                   onTap: () {
                     onChanged?.call(item);
                   },
                   child: itemBuilder?.call(item, currentItem == item) ??
                       _builder(item, context),
                 )
-            ].separate(Divider(
-              height: 16,
-              color: colors.grey2,
-            )),
+            ],
           ),
         ),
       ),
