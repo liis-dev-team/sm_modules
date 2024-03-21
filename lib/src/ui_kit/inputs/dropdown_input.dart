@@ -158,7 +158,7 @@ class _DropdownInputState<T> extends State<DropdownInput<T>> with TickerProvider
                                 axisAlignment: 1,
                                 axis: Axis.vertical,
                                 sizeFactor: _animation!,
-                                child: DropdownMenu<T>(
+                                child: DropdownInputMenu<T>(
                                   items: snapshot.data ?? [],
                                   currentItem: currentValue,
                                   onChanged: (value) {
@@ -316,7 +316,7 @@ class _DropdownInputState<T> extends State<DropdownInput<T>> with TickerProvider
   }
 }
 
-class DropdownMenu<E> extends StatelessWidget {
+class DropdownInputMenu<E> extends StatelessWidget {
   final List<E> items;
   final E? currentItem;
   final void Function(E value)? onChanged;
@@ -324,7 +324,7 @@ class DropdownMenu<E> extends StatelessWidget {
   final EdgeInsets? padding;
   final double? maxWidth;
 
-  const DropdownMenu({
+  const DropdownInputMenu({
     super.key,
     required this.items,
     this.currentItem,

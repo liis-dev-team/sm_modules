@@ -32,6 +32,7 @@ export 'package:sm_modules/src/ui_kit/inputs/calendar.dart';
 export 'package:sm_modules/src/ui_kit/inputs/calendar_single.dart';
 export 'package:sm_modules/src/ui_kit/inputs/checkbox_input.dart';
 export 'package:sm_modules/src/ui_kit/inputs/cupertino_date_picker.dart';
+export 'package:sm_modules/src/ui_kit/inputs/dropdown_select.dart';
 export 'package:sm_modules/src/ui_kit/inputs/dropdown_input.dart';
 export 'package:sm_modules/src/ui_kit/inputs/calendar_date_picker/calendar_date_picker2.dart';
 
