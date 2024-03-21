@@ -36,6 +36,10 @@ class _UIExamplesState extends State<UIExamples> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    AppTextField(
+                      multiline: true,
+                      maxHeight: 300,
+                    ),
                     DropdownInput<String>(
                       label: 'label',
                       menuAnchor: Alignment.bottomRight,

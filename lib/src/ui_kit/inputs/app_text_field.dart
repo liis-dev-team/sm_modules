@@ -177,7 +177,7 @@ class _AppTextFieldState extends State<AppTextField> {
             onTapOutside: (event) => _focus.unfocus(),
             onFieldSubmitted: widget.onSubmit,
             maxLines: widget.multiline ? null : 1,
-            expands: false,
+            expands: widget.multiline && widget.maxHeight!=double.infinity,
             textAlignVertical: widget.multiline
                 ? TextAlignVertical.top
                 : TextAlignVertical.center,

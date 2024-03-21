@@ -42,9 +42,9 @@ class DropdownInput<T> extends StatefulWidget {
   final void Function(dynamic value)? onChanged;
   final bool isNested;
   final Widget Function(dynamic item, bool current)? itemBuilder;
-  final Widget Function(
-    dynamic item,
-  )? labelBuilder;
+  final String Function(
+      dynamic item,
+      )? labelBuilder;
   final Color? textColor;
   final EdgeInsets? menuPadding;
   final double? maxWidth;
@@ -83,6 +83,14 @@ class _DropdownInputState<T> extends State<DropdownInput<T>> with TickerProvider
       } else {
         _close();
       }
+    });
+    _currentValue.addListener(() {
+      _textEditingController.value = _textEditingController.value.copyWith(
+          text: widget.labelBuilder?.call(_currentValue.value) ?? _currentValue.value.toString(),
+          selection: TextSelection(
+            baseOffset: (widget.labelBuilder?.call(_currentValue.value) ?? _currentValue.value.toString()).length,
+            extentOffset: (widget.labelBuilder?.call(_currentValue.value) ?? _currentValue.value.toString()).length,)
+      );
     });
     super.initState();
   }
@@ -147,7 +155,7 @@ class _DropdownInputState<T> extends State<DropdownInput<T>> with TickerProvider
                                 BoxShadow(
                                   color: Colors.black12,
                                   blurRadius: 4,
-                                  offset: Offset(0,2),
+                                  offset: Offset(0, 2),
                                 )
                               ],
                               borderRadius: const BorderRadius.all(Radius.circular(8)),
@@ -200,7 +208,7 @@ class _DropdownInputState<T> extends State<DropdownInput<T>> with TickerProvider
                             // keyboardType: widget.inputType,
                             // inputFormatters: widget.inputFormatters,
                             decoration: InputDecoration(
-                                // contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 12),
+                              // contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 12),
                                 labelText: widget.label,
                                 errorText: null,
                                 helperText: null,
@@ -334,10 +342,8 @@ class DropdownInputMenu<E> extends StatelessWidget {
     this.maxWidth,
   });
 
-  Widget _builder(
-    E item,
-    BuildContext context,
-  ) {
+  Widget _builder(E item,
+      BuildContext context,) {
     ThemeData theme = Theme.of(context);
     SMColors colors = theme.extension<SMColors>()!;
 
