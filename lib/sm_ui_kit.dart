@@ -29,6 +29,7 @@ export 'package:sm_modules/src/ui_kit/layouts/snack_bar/snack_bars/snacks.dart';
 export 'package:sm_modules/src/ui_kit/inputs/app_search_field.dart';
 export 'package:sm_modules/src/ui_kit/inputs/app_text_field.dart';
 export 'package:sm_modules/src/ui_kit/inputs/calendar.dart';
+export 'package:sm_modules/src/ui_kit/inputs/calendar_single.dart';
 export 'package:sm_modules/src/ui_kit/inputs/checkbox_input.dart';
 export 'package:sm_modules/src/ui_kit/inputs/cupertino_date_picker.dart';
 export 'package:sm_modules/src/ui_kit/inputs/dropdown_input.dart';

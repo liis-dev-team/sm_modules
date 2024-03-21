@@ -21,6 +21,7 @@ class AppTextField extends StatefulWidget {
   final Widget? suffix;
   final bool multiline;
   final double maxHeight;
+  final double minHeight;
 
   const AppTextField({
     Key? key,
@@ -38,6 +39,7 @@ class AppTextField extends StatefulWidget {
     this.password = false,
     this.helperText,
     this.multiline = false,
+    this.minHeight = 0,
     this.maxHeight = double.infinity,
     this.canClear = false,
   }) : super(key: key);
@@ -98,6 +100,7 @@ class _AppTextFieldState extends State<AppTextField> {
         ConstrainedBox(
           constraints: BoxConstraints(
             maxHeight: widget.maxHeight,
+            minHeight: widget.minHeight,
           ),
           child: TextFormField(
             autofocus: widget.autofocus,
