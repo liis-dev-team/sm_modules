@@ -13,12 +13,16 @@ class CalendarInput extends StatefulWidget {
   final Function(Vector2<DateTime>? value)? onSubmitted;
   final Function() onClose;
   final Vector2<DateTime>? initial;
+  final DateTime? firstDate;
+  final DateTime? lastDate;
 
   const CalendarInput({
     super.key,
     this.onSubmitted,
     this.initial,
     required this.onClose,
+    this.firstDate,
+    this.lastDate,
   });
 
   @override
@@ -89,8 +93,7 @@ class CalendarInputState extends State<CalendarInput> {
                             valueListenable: _tempDate,
                             builder: (context, value, _) {
                               return FutureBuilder(future: Future(() async {
-                                await Future.delayed(
-                                    const Duration(milliseconds: 150));
+                                await Future.delayed(const Duration(milliseconds: 150));
                                 return true;
                               }), builder: (context, snap) {
                                 if (!(snap.data ?? false)) {
@@ -101,30 +104,25 @@ class CalendarInputState extends State<CalendarInput> {
                                     if (dates.isEmpty) {
                                       _changeDate(null);
                                     } else if (dates.length == 1 ||
-                                        dates.length == 2 &&
-                                            dates[0]!.isSameDay(dates[1]!)) {
+                                        dates.length == 2 && dates[0]!.isSameDay(dates[1]!)) {
                                       _changeDate(Vector2<DateTime>(
                                           x: dates[0]!.startOfDay,
-                                          y: dates[0]!.endOfDay.sub(
-                                              const Duration(seconds: 1))));
+                                          y: dates[0]!.endOfDay.sub(const Duration(seconds: 1))));
                                     } else if (dates.length == 2) {
                                       _changeDate(Vector2<DateTime>(
                                           x: dates[0]!.startOfDay,
-                                          y: dates[1]!.endOfDay.subtract(
-                                              const Duration(
-                                                  milliseconds: 1))));
+                                          y: dates[1]!.endOfDay.subtract(const Duration(milliseconds: 1))));
                                     }
                                     return;
                                   },
                                   config: CalendarDatePicker2Config(
                                     calendarType: CalendarDatePicker2Type.range,
                                     rangeBidirectional: true,
-                                    lastDate: DateTime.now(),
-                                    // firstDate: DateTime.now(),
+                                    firstDate: widget.firstDate,
+                                    lastDate: widget.lastDate,
                                     // controlsHeight: 100,
                                     controlsTextStyle: AT.t.b16,
-                                    modePickerTextHandler: (
-                                        {required DateTime monthDate}) {
+                                    modePickerTextHandler: ({required DateTime monthDate}) {
                                       return '${DateFormat(DateFormat.MONTH, 'ru').format(monthDate)} ${DateFormat(DateFormat.YEAR, 'ru').format(monthDate)}';
                                     },
                                     customModePickerIcon: Icon(
@@ -141,12 +139,10 @@ class CalendarInputState extends State<CalendarInput> {
                                       'пт',
                                       'сб',
                                     ],
-                                    weekdayLabelTextStyle:
-                                        AT.t.b16.copyWith(color: colors.grey5),
+                                    weekdayLabelTextStyle: AT.t.b16.copyWith(color: colors.grey5),
                                     selectedDayHighlightColor: colors.primary,
                                     dayTextStyle: AT.t.b16,
-                                    selectedDayTextStyle:
-                                        AT.t.b16.copyWith(color: colors.white),
+                                    selectedDayTextStyle: AT.t.b16.copyWith(color: colors.white),
                                     firstDayOfWeek: 1,
                                     dayBuilder: ({
                                       required DateTime date,
@@ -157,8 +153,7 @@ class CalendarInputState extends State<CalendarInput> {
                                       bool? isToday,
                                       TextStyle? textStyle,
                                     }) {
-                                      if ((isToday ?? false) &&
-                                          !(isSelected ?? false)) {
+                                      if ((isToday ?? false) && !(isSelected ?? false)) {
                                         return Align(
                                           alignment: Alignment.bottomCenter,
                                           child: Stack(
@@ -173,18 +168,14 @@ class CalendarInputState extends State<CalendarInput> {
                                                 ),
                                               ),
                                               Align(
-                                                alignment:
-                                                    Alignment.bottomCenter,
+                                                alignment: Alignment.bottomCenter,
                                                 child: Container(
                                                   // margin: const EdgeInsets.only(top: 2),
                                                   width: 8,
                                                   height: 8,
                                                   decoration: BoxDecoration(
                                                     color: colors.primary,
-                                                    borderRadius:
-                                                        const BorderRadius.all(
-                                                            Radius.circular(
-                                                                10)),
+                                                    borderRadius: const BorderRadius.all(Radius.circular(10)),
                                                   ),
                                                 ),
                                               )
@@ -193,19 +184,15 @@ class CalendarInputState extends State<CalendarInput> {
                                         );
                                       }
                                       return DecoratedBox(
-                                        decoration:
-                                            decoration ?? const BoxDecoration(),
+                                        decoration: decoration ?? const BoxDecoration(),
                                         child: Center(
                                           child: Text(
                                             date.day.toString(),
                                             style: textStyle?.copyWith(
                                                 color: date.isWeekend &&
-                                                        !((isSelected ??
-                                                                false) ||
-                                                            (isOverRanged ??
-                                                                false) ||
-                                                            (isDisabled ??
-                                                                false))
+                                                        !((isSelected ?? false) ||
+                                                            (isOverRanged ?? false) ||
+                                                            (isDisabled ?? false))
                                                     ? colors.primary
                                                     : textStyle.color),
                                           ),
@@ -232,9 +219,7 @@ class CalendarInputState extends State<CalendarInput> {
                             onTap: () {
                               _changeDate(Vector2(
                                 x: DateTime.now().startOfDay,
-                                y: DateTime.now()
-                                    .endOfDay
-                                    .sub(const Duration(seconds: 1)),
+                                y: DateTime.now().endOfDay.sub(const Duration(seconds: 1)),
                               ));
                             },
                             child: Text(
