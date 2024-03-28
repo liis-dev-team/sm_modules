@@ -93,6 +93,13 @@ class _DropdownSelectState<T> extends State<DropdownSelect<T>>
     return renderBox.size.height;
   }
 
+
+  @override
+  void didUpdateWidget(DropdownSelect<T> oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _currentValue.value = widget.initialValue;
+  }
+
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
