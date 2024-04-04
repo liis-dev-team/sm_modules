@@ -118,6 +118,7 @@ class _DropdownSelectState<T> extends State<DropdownSelect<T>> with TickerProvid
                 child: const ColoredBox(color: Colors.transparent),
               ),
               child: PortalTarget(
+                portalCandidateLabels: widget.portalLabel == null ? [PortalLabel.main] : [widget.portalLabel!],
                 visible: widget.isNested ? true : opened,
                 portalFollower: Visibility(
                   visible: widget.isNested ? opened : true,
