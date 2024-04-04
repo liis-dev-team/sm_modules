@@ -226,6 +226,7 @@ class _DropdownInputState<T> extends State<DropdownInput<T>> with TickerProvider
                                     if (opened) {
                                       _close();
                                     } else {
+                                      widget.onLoadItems(_textEditingController.value.text);
                                       _open();
                                     }
                                   },
