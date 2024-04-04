@@ -20,7 +20,10 @@ class DropdownSelect<T> extends StatefulWidget {
     this.isNested = false,
     this.itemBuilder,
     this.labelBuilder,
-    this.textColor, this.menuPadding, this.maxWidth,
+    this.textColor,
+    this.menuPadding,
+    this.maxWidth,
+    this.portalLabel,
   });
 
   final Alignment menuAnchor;
@@ -40,13 +43,13 @@ class DropdownSelect<T> extends StatefulWidget {
   final Color? textColor;
   final EdgeInsets? menuPadding;
   final double? maxWidth;
+  final PortalLabel? portalLabel;
 
   @override
   State<DropdownSelect> createState() => _DropdownSelectState();
 }
 
-class _DropdownSelectState<T> extends State<DropdownSelect<T>>
-    with TickerProviderStateMixin {
+class _DropdownSelectState<T> extends State<DropdownSelect<T>> with TickerProviderStateMixin {
   final ValueNotifier<bool> _opened = ValueNotifier(false);
 
   late ValueNotifier<T?> _currentValue;
@@ -77,9 +80,7 @@ class _DropdownSelectState<T> extends State<DropdownSelect<T>>
   }
 
   void _close() {
-    _animationController!
-        .animateTo(0)
-        .whenComplete(() => _opened.value = false);
+    _animationController!.animateTo(0).whenComplete(() => _opened.value = false);
   }
 
   double offsetForDrop() {
@@ -92,7 +93,6 @@ class _DropdownSelectState<T> extends State<DropdownSelect<T>>
     RenderBox renderBox = context.findRenderObject() as RenderBox;
     return renderBox.size.height;
   }
-
 
   @override
   void didUpdateWidget(DropdownSelect<T> oldWidget) {
@@ -111,6 +111,7 @@ class _DropdownSelectState<T> extends State<DropdownSelect<T>>
           builder: (context, currentValue, _) {
             return PortalTarget(
               visible: opened,
+              portalCandidateLabels: widget.portalLabel == null ? [PortalLabel.main] : [widget.portalLabel!],
               portalFollower: GestureDetector(
                 behavior: HitTestBehavior.opaque,
                 onTap: () => _close(),
@@ -136,7 +137,7 @@ class _DropdownSelectState<T> extends State<DropdownSelect<T>>
                           BoxShadow(
                             color: Colors.black12,
                             blurRadius: 4,
-                            offset: Offset(0,2),
+                            offset: Offset(0, 2),
                           )
                         ],
                         borderRadius: const BorderRadius.all(Radius.circular(8)),
@@ -265,8 +266,7 @@ class _DropdownSelectState<T> extends State<DropdownSelect<T>>
                       },
                       child: DecoratedBox(
                         decoration: BoxDecoration(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(8)),
+                            borderRadius: const BorderRadius.all(Radius.circular(8)),
                             border: Border.all(
                               width: 1,
                               color: opened ? colors.primary : colors.grey4,
@@ -278,19 +278,14 @@ class _DropdownSelectState<T> extends State<DropdownSelect<T>>
                               Flexible(
                                 fit: FlexFit.tight,
                                 child: Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 12),
-                                  child:
-                                      widget.labelBuilder?.call(currentValue) ??
-                                          Text(
-                                            currentValue?.toString() ??
-                                                widget.label ??
-                                                '',
-                                            style: AT.t.b16.copyWith(
-                                                color: widget.textColor ?? (currentValue == null
-                                                    ? colors.grey6
-                                                    : colors.black)),
-                                          ),
+                                  padding: const EdgeInsets.symmetric(vertical: 12),
+                                  child: widget.labelBuilder?.call(currentValue) ??
+                                      Text(
+                                        currentValue?.toString() ?? widget.label ?? '',
+                                        style: AT.t.b16.copyWith(
+                                            color: widget.textColor ??
+                                                (currentValue == null ? colors.grey6 : colors.black)),
+                                      ),
                                 ),
                               ),
                               IconButton(
@@ -303,9 +298,7 @@ class _DropdownSelectState<T> extends State<DropdownSelect<T>>
                                   }
                                 },
                                 icon: Icon(
-                                  opened
-                                      ? AppIcons.caretUp
-                                      : AppIcons.caretDown,
+                                  opened ? AppIcons.caretUp : AppIcons.caretDown,
                                   size: 16,
                                 ),
                               ),
@@ -339,7 +332,8 @@ class DropdownMenu<E> extends StatelessWidget {
     required this.items,
     this.currentItem,
     this.onChanged,
-    this.itemBuilder, this.padding,
+    this.itemBuilder,
+    this.padding,
   });
 
   Widget _builder(
@@ -355,8 +349,7 @@ class DropdownMenu<E> extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           child: Text(
             item.toString(),
-            style: AT.t.b16.copyWith(
-                color: currentItem == item ? colors.primary : colors.black),
+            style: AT.t.b16.copyWith(color: currentItem == item ? colors.primary : colors.black),
           ),
         ),
       ],
@@ -372,22 +365,25 @@ class DropdownMenu<E> extends StatelessWidget {
       padding: padding ?? EdgeInsets.zero,
       child: items.isEmpty
           ? Center(
-        child: Text('Ничего не найдено', style: AT.t.b14Bold.grey6(context),),
-      ) : Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          for (E item in items)
-            ClickableHoverWidget(
-              color: colors.grey1,
-              onTap: () {
-                onChanged?.call(item);
-              },
-              child: itemBuilder?.call(item, currentItem == item) ??
-                  _builder(item, context),
+              child: Text(
+                'Ничего не найдено',
+                style: AT.t.b14Bold.grey6(context),
+              ),
             )
-        ],
-      ),
+          : Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                for (E item in items)
+                  ClickableHoverWidget(
+                    color: colors.grey1,
+                    onTap: () {
+                      onChanged?.call(item);
+                    },
+                    child: itemBuilder?.call(item, currentItem == item) ?? _builder(item, context),
+                  )
+              ],
+            ),
     );
   }
 }
