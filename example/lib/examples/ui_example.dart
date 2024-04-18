@@ -31,19 +31,24 @@ class _UIExamplesState extends State<UIExamples> {
           ThemeData theme = Theme.of(context);
           SMColors colors = theme.extension<SMColors>()!;
           return Scaffold(
-            body: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Text('asdads'),
-                Flexible(
-                  child: PaginatedListView(
-                    itemBuilder: (BuildContext context, int index) {
-                      return ColoredBox(color: Colors.red, child: SizedBox(height:40, child: Text('$index')));
-                    },
-                    itemCount: 40,
+            body: ColoredBox(
+              color: Colors.blue,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text('asdads'),
+                  Flexible(
+                    child: PaginatedListView(
+                      itemBuilder: (BuildContext context, int index) {
+                        return ColoredBox(color: Colors.red, child: SizedBox(height:40, child: Text('$index')));
+                      },
+                      itemCount: 40,
+                      needRefresher: false,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         }),

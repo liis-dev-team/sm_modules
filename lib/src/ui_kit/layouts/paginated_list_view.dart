@@ -18,6 +18,7 @@ class PaginatedListView extends StatefulWidget {
   final FlutterListViewController? flutterListViewController;
   final Widget? emptyWidget;
   final double? itemExtent;
+  final bool needRefresher;
 
   const PaginatedListView({
     Key? key,
@@ -35,6 +36,7 @@ class PaginatedListView extends StatefulWidget {
     this.flutterListViewController,
     this.emptyWidget,
     this.itemExtent,
+    this.needRefresher = true,
   }) : super(key: key);
 
   @override
@@ -138,7 +140,7 @@ class _PaginatedListViewState extends State<PaginatedListView> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        widget.itemCount == 0 ? _hasNoEntities() : _hasEntities(),
+        widget.needRefresher ? widget.itemCount == 0 ? _hasNoEntities() : _hasEntities() : widget.itemCount == 0 ? _hasNoEntitiesWithNoRefresh() : _hasEntitiesWithNoRefresh(),
         ValueListenableBuilder(
           builder: (context, value, _) => IgnorePointer(
             child: AnimatedContainer(
@@ -179,6 +181,20 @@ class _PaginatedListViewState extends State<PaginatedListView> {
       ],
     );
   }
+
+  Widget _hasEntitiesWithNoRefresh() => FlutterListView(
+    controller: _listViewController,
+    delegate: FlutterListViewDelegate(
+      widget.itemBuilder,
+      childCount: widget.itemCount,
+      keepPosition: true,
+      onItemKey: widget.uniqueIds == null
+          ? null
+          : (index) => widget.uniqueIds![index].toString(),
+      preferItemHeight: widget.itemExtent ?? 50,
+    ),
+    shrinkWrap: true,
+  );
 
   Widget _hasEntities() => ValueListenableBuilder(
         builder: (context, value, child) => RefreshConfiguration(
@@ -228,6 +244,8 @@ class _PaginatedListViewState extends State<PaginatedListView> {
           ),
         ),
       );
+
+  Widget _hasNoEntitiesWithNoRefresh() => widget.emptyWidget ?? SizedBox();
 
   Widget _hasNoEntities() => RefreshConfiguration(
         headerBuilder: () => ClassicHeader(
