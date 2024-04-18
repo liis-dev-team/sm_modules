@@ -140,25 +140,20 @@ class _PaginatedListViewState extends State<PaginatedListView> {
       children: [
         widget.itemCount == 0 ? _hasNoEntities() : _hasEntities(),
         ValueListenableBuilder(
-          builder: (context, value, _) => Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            child: IgnorePointer(
-              child: AnimatedContainer(
-                duration: kThemeAnimationDuration,
-                height: 8,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      value
-                          ? Colors.black.withOpacity(0.06)
-                          : Colors.black.withOpacity(0.00),
-                      Colors.black.withOpacity(0.00)
-                    ],
-                  ),
+          builder: (context, value, _) => IgnorePointer(
+            child: AnimatedContainer(
+              duration: kThemeAnimationDuration,
+              height: 8,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    value
+                        ? Colors.black.withOpacity(0.06)
+                        : Colors.black.withOpacity(0.00),
+                    Colors.black.withOpacity(0.00)
+                  ],
                 ),
               ),
             ),
