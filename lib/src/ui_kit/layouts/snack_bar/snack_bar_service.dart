@@ -73,6 +73,7 @@ class _SnackBarServiceState extends State<SnackBarService> {
       fit: StackFit.expand,
       children: [
         widget.child,
+        if (_snackBars.isNotEmpty)
         Align(
           alignment: Alignment.bottomRight,
           child: Padding(
