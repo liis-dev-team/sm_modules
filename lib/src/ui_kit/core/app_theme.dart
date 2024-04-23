@@ -220,6 +220,13 @@ class AppThemes {
           ),
           borderRadius: BorderRadius.all(Radius.circular(8)),
         ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            width: 1,
+            color: AppColorsLight.primary,
+          ),
+          borderRadius: BorderRadius.all(Radius.circular(8)),
+        ),
         errorBorder: OutlineInputBorder(
           borderSide: BorderSide(
             width: 1,
