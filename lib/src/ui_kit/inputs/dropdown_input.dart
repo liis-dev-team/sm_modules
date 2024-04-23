@@ -27,6 +27,7 @@ class DropdownInput<T> extends StatefulWidget {
     this.textColor,
     this.menuPadding,
     this.maxWidth,
+    this.errorText,
     required this.itemsStream,
   });
 
@@ -48,6 +49,7 @@ class DropdownInput<T> extends StatefulWidget {
   final Color? textColor;
   final EdgeInsets? menuPadding;
   final double? maxWidth;
+  final String? errorText;
 
   @override
   State<DropdownInput> createState() => _DropdownInputState();
@@ -210,7 +212,7 @@ class _DropdownInputState<T> extends State<DropdownInput<T>> with TickerProvider
                             decoration: InputDecoration(
                               // contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 12),
                                 labelText: widget.label,
-                                errorText: null,
+                                errorText: widget.errorText,
                                 helperText: null,
                                 helperMaxLines: 3,
                                 helperStyle: AT.t.caption,
