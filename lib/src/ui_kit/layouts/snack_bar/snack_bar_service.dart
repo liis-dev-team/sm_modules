@@ -26,6 +26,9 @@ class _SnackBarServiceState extends State<SnackBarService> {
     _snackBars.insert(0, snack);
     _listKey.currentState!
         .insertItem(0, duration: const Duration(milliseconds: 300));
+    setState(() {
+
+    });
   }
 
   void _removeItem(AppSnack snack) {
@@ -54,6 +57,9 @@ class _SnackBarServiceState extends State<SnackBarService> {
     );
 
     _snackBars.removeAt(index);
+    setState(() {
+
+    });
   }
 
   @override
