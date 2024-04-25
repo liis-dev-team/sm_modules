@@ -81,7 +81,7 @@ class _SnackBarServiceState extends State<SnackBarService> {
       children: [
         widget.child,
         Offstage(
-          offstage: _snackBars.isEmpty,
+          offstage: false,
           child: Align(
             alignment: Alignment.bottomRight,
             child: Padding(
