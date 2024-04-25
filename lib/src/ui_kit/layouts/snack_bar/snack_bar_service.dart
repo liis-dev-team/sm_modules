@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'app_snack_bar.dart';
@@ -73,44 +74,46 @@ class _SnackBarServiceState extends State<SnackBarService> {
       fit: StackFit.expand,
       children: [
         widget.child,
-        if (_snackBars.isNotEmpty)
-        Align(
-          alignment: Alignment.bottomRight,
-          child: Padding(
-            padding: const EdgeInsets.all(32),
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(
-                maxWidth: 400,
-                maxHeight: 600,
-              ),
-              child: AnimatedList(
-                key: _listKey,
-                shrinkWrap: true,
-                initialItemCount: _snackBars.length,
-                itemBuilder: (_, index, animation) {
-                  animation = animation.drive(Tween(begin: 0.0, end: 1.0)
-                      .chain(CurveTween(curve: Curves.easeInOut)));
-                  return Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: SlideTransition(
-                      key: UniqueKey(),
-                      position: Tween<Offset>(
-                        begin: const Offset(0, 1),
-                        end: const Offset(0, 0),
-                      ).animate(animation),
-                      child: ScaleTransition(
-                        scale: animation,
-                        child: FadeTransition(
-                          opacity: animation,
-                          child: AppSnackBar(
-                            entity: _snackBars[index],
+        Offstage(
+          offstage: _snackBars.isEmpty,
+          child: Align(
+            alignment: Alignment.bottomRight,
+            child: Padding(
+              padding: const EdgeInsets.all(32),
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(
+                  maxWidth: 400,
+                  maxHeight: 600,
+                ),
+                child: AnimatedList(
+                  key: _listKey,
+                  shrinkWrap: true,
+                  initialItemCount: _snackBars.length,
+                  itemBuilder: (_, index, animation) {
+                    animation = animation.drive(Tween(begin: 0.0, end: 1.0)
+                        .chain(CurveTween(curve: Curves.easeInOut)));
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: SlideTransition(
+                        key: UniqueKey(),
+                        position: Tween<Offset>(
+                          begin: const Offset(0, 1),
+                          end: const Offset(0, 0),
+                        ).animate(animation),
+                        child: ScaleTransition(
+                          scale: animation,
+                          child: FadeTransition(
+                            opacity: animation,
+                            child: AppSnackBar(
+                              entity: _snackBars[index],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  );
-                },
-                reverse: true,
+                    );
+                  },
+                  reverse: true,
+                ),
               ),
             ),
           ),
