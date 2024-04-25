@@ -94,6 +94,7 @@ class _SnackBarServiceState extends State<SnackBarService> {
                 child: AnimatedList(
                   key: _listKey,
                   shrinkWrap: true,
+                  padding: EdgeInsets.zero,
                   initialItemCount: _snackBars.length,
                   itemBuilder: (_, index, animation) {
                     animation = animation.drive(Tween(begin: 0.0, end: 1.0)
