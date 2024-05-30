@@ -41,6 +41,11 @@ flutter:
   assets:
     - packages/sm_modules/assets/images/auth_back_cubes.png
     - packages/sm_modules/assets/images/logo.svg
+    - packages/sm_modules/assets/images/no_available/no_checks.svg
+    - packages/sm_modules/assets/images/no_available/no_draws.svg
+    - packages/sm_modules/assets/images/no_available/no_issues.svg
+    - packages/sm_modules/assets/images/no_available/no_models.svg
+    - packages/sm_modules/assets/images/no_available/no_projects.svg
 
   fonts:
     - family: AppIcons

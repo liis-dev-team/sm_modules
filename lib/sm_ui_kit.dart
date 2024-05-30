@@ -37,3 +37,5 @@ export 'package:sm_modules/src/ui_kit/inputs/dropdown_input.dart';
 export 'package:sm_modules/src/ui_kit/inputs/calendar_date_picker/calendar_date_picker2.dart';
 
 export 'package:sm_modules/src/ui_kit/custom_iframe.dart';
+
+export 'package:sm_modules/src/informing/informing_widget.dart';
