@@ -17,6 +17,8 @@ export 'package:sm_modules/src/ui_kit/core/app_icons_extra.dart';
 export 'package:sm_modules/src/ui_kit/core/app_icons_fill.dart';
 export 'package:sm_modules/src/ui_kit/core/app_theme.dart';
 export 'package:sm_modules/src/ui_kit/core/app_typography.dart';
+export 'package:sm_modules/src/ui_kit/core/adaptive/adaptive_thresholds.dart';
+export 'package:sm_modules/src/ui_kit/core/adaptive/app_adaptive.dart';
 
 export 'package:sm_modules/src/ui_kit/layouts/app_interactive_viewer.dart';
 export 'package:sm_modules/src/ui_kit/layouts/custom_tooltip.dart';
@@ -37,5 +39,6 @@ export 'package:sm_modules/src/ui_kit/inputs/dropdown_input.dart';
 export 'package:sm_modules/src/ui_kit/inputs/calendar_date_picker/calendar_date_picker2.dart';
 
 export 'package:sm_modules/src/ui_kit/custom_iframe.dart';
+
 
 export 'package:sm_modules/src/informing/informing_widget.dart';
