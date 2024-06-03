@@ -24,3 +24,10 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
+
+  assets:
+    - assets/images/no_available/no_checks.svg
+    - assets/images/no_available/no_draws.svg
+    - assets/images/no_available/no_issues.svg
+    - assets/images/no_available/no_models.svg
+    - assets/images/no_available/no_projects.svg

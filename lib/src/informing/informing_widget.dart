@@ -38,13 +38,15 @@ class _CustomInformationWidgetState extends State<CustomInformationWidget> {
   Widget build(BuildContext context) {
     bool isSmall = AppAdaptive.of(context, AdaptiveThresholds.l512).l512;
     print('IsSmall: $isSmall');
-    return isSmall
+    Widget w =  isSmall
         ? VerticalInformationMessage(
             children: [_svgPicture, _message],
           )
         : HorizontalInformationMessage(
             children: [_svgPicture, _message],
           );
+
+    return Center(child: w,);
   }
 }
 
@@ -120,28 +122,4 @@ class InformationBody extends StatelessWidget {
   }
 }
 
-Widget noProjects({required String title, required String body}) {
-  String path =
-      'packages/sm_modules/assets/images/no_available/no_projects.svg';
-  return CustomInformationWidget(title: title, body: body, pathToFile: path);
-}
 
-Widget noDraws({required String title, required String body}) {
-  String path = 'packages/sm_modules/assets/images/no_available/no_draws.svg';
-  return CustomInformationWidget(title: title, body: body, pathToFile: path);
-}
-
-Widget noIssues({required String title, required String body}) {
-  String path = 'packages/sm_modules/assets/images/no_available/no_issues.svg';
-  return CustomInformationWidget(title: title, body: body, pathToFile: path);
-}
-
-Widget noModels({required String title, required String body}) {
-  String path = 'packages/sm_modules/assets/images/no_available/no_models.svg';
-  return CustomInformationWidget(title: title, body: body, pathToFile: path);
-}
-
-Widget noChecks({required String title, required String body}) {
-  String path = 'packages/sm_modules/assets/images/no_available/no_checks.svg';
-  return CustomInformationWidget(title: title, body: body, pathToFile: path);
-}

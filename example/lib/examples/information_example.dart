@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 import 'package:sm_modules/sm_ui_kit.dart';
@@ -14,10 +16,8 @@ class InformationTestApp extends StatelessWidget {
         child: Builder(
           builder: (context) {
             return AppAdaptive(
-                screenSize: MediaQuery
-                    .of(context)
-                    .size,
-                child: const WarningExamples(),
+              screenSize: MediaQuery.of(context).size,
+              child: const WarningExamples(),
             );
           },
         ),
@@ -25,7 +25,6 @@ class InformationTestApp extends StatelessWidget {
     );
   }
 }
-
 
 class WarningExamples extends StatefulWidget {
   const WarningExamples({super.key});
@@ -36,7 +35,7 @@ class WarningExamples extends StatefulWidget {
 
 class _WarningExamplesState extends State<WarningExamples> {
   late final List<Widget> pages = [];
-  late Widget _current;
+  final StreamController<Widget> _controller = StreamController();
   int pos = 0;
 
   @override
@@ -51,12 +50,12 @@ class _WarningExamplesState extends State<WarningExamples> {
               onPressed: () {
                 pos++;
                 if (pos == pages.length) pos = 0;
-                _current = pages[pos];
-                setState(() {});
+                print('pos: $pos');
+                Widget w = pages[pos];
+                _controller.sink.add(w);
               },
-              child: Icon(Icons.navigate_before_rounded,
+              child: const Icon(Icons.navigate_before_rounded,
                   color: AppColorsLight.primary),
-              heroTag: "fab1",
             ),
           ),
           Padding(
@@ -65,20 +64,32 @@ class _WarningExamplesState extends State<WarningExamples> {
               onPressed: () {
                 pos--;
                 if (pos == -1) pos = pages.length - 1;
-                _current = pages[pos];
-                setState(() {});
+                print('pos: $pos');
+                Widget w = pages[pos];
+                _controller.sink.add(w);
               },
-              child: Icon(
+              child: const Icon(
                 Icons.navigate_next_rounded,
                 color: AppColorsLight.primary,
               ),
-              heroTag: "fab2",
             ),
           ),
         ],
       ),
       appBar: AppBar(),
-      body: _current,
+      body: StreamBuilder<Widget>(
+        stream: _controller.stream,
+        builder: (context, snapshot) {
+          print('Rebuild');
+          if (snapshot.hasData) {
+            print('${snapshot.data} ');
+            return snapshot.data ?? const SizedBox();
+          }
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
+      ),
     );
   }
 
@@ -106,6 +117,32 @@ class _WarningExamplesState extends State<WarningExamples> {
       body: 'Для вас нет достпуных чек-листов',
     ));
 
-    _current = pages[0];
+    Widget w = pages[pos];
+    _controller.sink.add(w);
   }
+}
+
+Widget noProjects({required String title, required String body}) {
+  String path = 'assets/images/no_available/no_projects.svg';
+  return CustomInformationWidget(title: title, body: body, pathToFile: path);
+}
+
+Widget noDraws({required String title, required String body}) {
+  String path = 'assets/images/no_available/no_draws.svg';
+  return CustomInformationWidget(title: title, body: body, pathToFile: path);
+}
+
+Widget noIssues({required String title, required String body}) {
+  String path = 'assets/images/no_available/no_issues.svg';
+  return CustomInformationWidget(title: title, body: body, pathToFile: path);
+}
+
+Widget noModels({required String title, required String body}) {
+  String path = 'assets/images/no_available/no_models.svg';
+  return CustomInformationWidget(title: title, body: body, pathToFile: path);
+}
+
+Widget noChecks({required String title, required String body}) {
+  String path = 'assets/images/no_available/no_checks.svg';
+  return CustomInformationWidget(title: title, body: body, pathToFile: path);
 }
