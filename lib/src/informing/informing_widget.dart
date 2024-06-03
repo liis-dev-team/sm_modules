@@ -98,9 +98,9 @@ class InformationBody extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isSmall = AppAdaptive.of(context, AdaptiveThresholds.l512).l512;
     return Padding(
-      padding:  !isSmall ? const EdgeInsets.only(left: 48.0) : const EdgeInsets.only(top: 48.0),
+      padding:  !isSmall ? const EdgeInsets.only(left: 24.0) : const EdgeInsets.only(top: 24.0),
       child: SizedBox(
-        height: 78,
+        height: 64,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
