@@ -80,6 +80,14 @@ class _AppTextFieldState extends State<AppTextField> {
     }
   }
 
+
+  @override
+  void dispose() {
+    _focus.dispose();
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
