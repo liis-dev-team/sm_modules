@@ -1,11 +1,11 @@
 name: sm_modules
 description: "SM UI kit"
 version: 1.1.1
-homepage: https://github.com/liis-dev-team/sm_modules.git
+homepage: https://github.com/Balashoffs/sm_modules
 publish_to: none
 
 environment:
-  sdk: '>=3.2.3 <4.0.0'
+  sdk: '>=3.3.0<4.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
@@ -16,7 +16,7 @@ dependencies:
   flutter_list_view: ^1.1.23
   pull_to_refresh: ^2.0.0
   flutter_portal: ^1.1.4
-  intl: ^0.18.1
+  intl: ^0.19.0
   flutter_localization: ^0.2.0
   flutter_svg: ^2.0.10
 
