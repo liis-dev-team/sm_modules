@@ -70,6 +70,14 @@ class _AppSearchFieldState extends State<AppSearchField> {
     super.initState();
   }
 
+
+  @override
+  void dispose() {
+    _focus.dispose();
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   void didUpdateWidget(AppSearchField oldWidget) {
     super.didUpdateWidget(oldWidget);

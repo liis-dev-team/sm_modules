@@ -74,6 +74,13 @@ class _DropdownSelectState<T> extends State<DropdownSelect<T>> with TickerProvid
     super.initState();
   }
 
+  @override
+  void dispose() {
+    _animationController?.dispose();
+    _focusNode.dispose();
+    super.dispose();
+  }
+
   void _open() {
     _opened.value = true;
     _animationController!.animateTo(1);

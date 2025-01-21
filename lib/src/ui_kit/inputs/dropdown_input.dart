@@ -97,6 +97,15 @@ class _DropdownInputState<T> extends State<DropdownInput<T>> with TickerProvider
     super.initState();
   }
 
+
+  @override
+  void dispose() {
+    _animationController?.dispose();
+    _focusNode.dispose();
+    _textEditingController.dispose();
+    super.dispose();
+  }
+
   void _open() {
     _opened.value = true;
     _animationController!.animateTo(1);

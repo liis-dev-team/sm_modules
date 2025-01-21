@@ -1,5 +1,7 @@
 name: sm_modules
 description: "SM UI kit"
+version: 1.1.1
+homepage: https://github.com/Balashoffs/sm_modules
 version: 1.1.2
 homepage: https://github.com/Balashoffs/sm_modules
 publish_to: none
