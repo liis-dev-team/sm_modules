@@ -43,6 +43,7 @@ class AppTextField extends StatefulWidget {
     this.minHeight = 0,
     this.maxHeight = double.infinity,
     this.canClear = false,
+    this.style
   }) : super(key: key);
 
   @override
