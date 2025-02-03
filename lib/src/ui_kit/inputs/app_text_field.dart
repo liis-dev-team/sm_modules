@@ -22,6 +22,7 @@ class AppTextField extends StatefulWidget {
   final bool multiline;
   final double maxHeight;
   final double minHeight;
+  final TextStyle? style;
 
   const AppTextField({
     Key? key,
@@ -79,7 +80,6 @@ class _AppTextFieldState extends State<AppTextField> {
               extentOffset: widget.initialValue!.length));
     }
   }
-
 
   @override
   void dispose() {
@@ -178,14 +178,15 @@ class _AppTextFieldState extends State<AppTextField> {
             obscureText: _obscure,
             obscuringCharacter: '*',
             enabled: widget.enabled,
-            style: AT.t.b16.copyWith(
-              color: colors.black,
-            ),
+            style: widget.style ??
+                AT.t.b16.copyWith(
+                  color: colors.black,
+                ),
             onChanged: (text) => widget.onChanged?.call(text),
             onTapOutside: (event) => _focus.unfocus(),
             onFieldSubmitted: widget.onSubmit,
             maxLines: widget.multiline ? null : 1,
-            expands: widget.multiline && widget.maxHeight!=double.infinity,
+            expands: widget.multiline && widget.maxHeight != double.infinity,
             textAlignVertical: widget.multiline
                 ? TextAlignVertical.top
                 : TextAlignVertical.center,
